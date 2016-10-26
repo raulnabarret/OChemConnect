@@ -7,3 +7,19 @@ body {
 main {
  	flex: 1 0 auto;
 }
+
+#stages {
+	padding: 75px 0 !important; 
+}
+
+#stages-progress {
+	margin: 20px 0 !important;
+}
+
+#stages-cards {
+	padding: 20px 0 !important;
+}
+
+.stages-card-content {
+	margin: 0;
+}
