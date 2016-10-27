@@ -68,5 +68,14 @@ h2 {
 }
 
 .stages-card-content {
+  font-weight: 700;
 	margin: 0;
 }
+
+.stages-card-content div p span {
+  font-weight: 300;
+}
+
+
+
+
