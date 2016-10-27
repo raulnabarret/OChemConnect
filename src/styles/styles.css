@@ -42,6 +42,19 @@ nav .nav-wrapper {
 	padding: 0 30px;
 }
 
+.header-group {
+  margin: 10px 0 0 0;
+}
+
+h1 {
+  margin: 0 0;
+  padding: 10px 0;
+}
+
+h2 {
+  margin: 0 0;
+}
+
 #stages {
 	padding: 75px 0 !important; 
 }
