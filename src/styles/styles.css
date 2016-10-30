@@ -28,6 +28,16 @@
   content: "\e901";
 }
 
+input[type=text] {
+  width: 40px !important;
+  margin: 0;
+  text-align: center;
+}
+
+.results {
+  padding: 12px 0
+}
+
 body {
     display: flex;
     min-height: 100vh;
