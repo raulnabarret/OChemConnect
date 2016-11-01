@@ -5,6 +5,9 @@ $(document).ready(function() {
     $('.carousel').carousel()
     $('.carousel.carousel-slider').carousel({ full_width: true })
 
+
+// GAME 1
+
     $(init)
 
     var correctCards = 0
@@ -95,7 +98,7 @@ $(document).ready(function() {
         var cardName = ui.draggable.data('nombre')
 
         if (slotName == cardName) {
-            ui.draggable.addClass('green')
+            ui.draggable.addClass('indigo lighten-5')
             ui.draggable.draggable('disable')
 
             $(this).droppable('disable')
@@ -111,7 +114,7 @@ $(document).ready(function() {
         var cardStructure = ui.draggable.data('estructura')
 
         if (slotStructure == cardStructure) {
-            ui.draggable.addClass('green')
+            ui.draggable.addClass('indigo lighten-5')
             ui.draggable.draggable('disable')
 
             $(this).droppable('disable')
@@ -121,5 +124,8 @@ $(document).ready(function() {
         }
 
     }
+
+    // GAME 2
+    
 
 })
