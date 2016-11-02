@@ -25,16 +25,6 @@
     content: "\e901";
 }
 
-input[type=text] {
-    width: 40px !important;
-    margin: 0;
-    text-align: center;
-}
-
-.results {
-    padding: 12px 0
-}
-
 body {
     display: flex;
     min-height: 100vh;
@@ -146,4 +136,32 @@ h2 {
 .slot-nom-drop .card-content,
 .slot-estr-drop .card-content {
     padding: 19px 20px;
+}
+
+/*Game 2*/
+
+input[type=text] {
+    width: 40px !important;
+    height: 2rem;
+    margin: 0;
+    text-align: center;
+}
+
+.reactions-inputs {
+    text-align: right;
+}
+
+.reactions-results {
+    padding: 5px 0
+}
+
+.reactions-results-arrow {
+    color: #283593;
+    padding-right: 30px;
+}
+
+.reactions-results-equation {
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-weight: 700;   
 }
