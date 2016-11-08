@@ -164,18 +164,14 @@ function checar() {
         }
 
         if (arrNomBool[$x] == true) {
-            alert(arrNom[$x]);
-            alert(arrNombresLista[$x])
             if (arrNom[$x] == arrNombresLista[$x]) {
                 var el = document.getElementById("card-nom-" + arrNombresLista[$x]);
-                alert("card-nom-" + arrNombresLista[$x]);
                 removeClass(el, 'indigo.lighten-5');
                 addClass(el, 'correct');
                 correctCards++;
             }
             else {
                 var el = document.getElementById("card-nom-" + arrNom[$x]);
-                alert("card-nom-" + arrNom[$x]);
                 removeClass(el, 'indigo.lighten-5');
                 addClass(el, 'incorrect');
 
