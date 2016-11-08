@@ -127,5 +127,8 @@ $(document).ready(function() {
 
     // GAME 2
     
+    function myFunction() {
+        console.log("hola")
+    }
 
 })
