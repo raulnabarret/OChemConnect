@@ -116,6 +116,10 @@ h2 {
 .card-estr-drag .card-content {
     letter-spacing: 1px;
  }
+ 
+ .correct {
+	background-color: #9dd79d !important;
+ }
 
 
 .card-estr-drag .card-content {
@@ -125,6 +129,10 @@ h2 {
 .card-img {
     height: 20px !important;
     width: auto;
+}
+
+.incorrect {
+	background-color: #e26776 !important;
 }
 
 .slot-nom-drop,

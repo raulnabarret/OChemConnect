@@ -1,3 +1,14 @@
+var arrNombresLista = ["metano","etano","propano","butano","pentano","hexano","heptano","octano","nonano","decano","undecano","duodecano"];
+var arrNom = ["vacio","vacio","vacio","vacio","vacio","vacio","vacio","vacio","vacio","vacio","vacio","vacio"];
+var arrEstr = [0,0,0,0,0,0,0,0,0,0,0,0];
+var arrEstrBool = [false,false,false,false,false,false,false,false,false,false,false,false];
+var arrNomBool = [false,false,false,false,false,false,false,false,false,false,false,false];
+
+var contador = 0;
+var nomIncorrecto = false;
+var estrIncorrecto = false;
+var correctCards = 0;
+
 $(document).ready(function() {
 
     $('.button-collapse').sideNav()
@@ -9,8 +20,6 @@ $(document).ready(function() {
 // GAME 1
 
     $(init)
-
-    var correctCards = 0
 
     function init() {
 
@@ -97,15 +106,17 @@ $(document).ready(function() {
         var slotName = $(this).data('nombre')
         var cardName = ui.draggable.data('nombre')
 
-        if (slotName == cardName) {
-            ui.draggable.addClass('indigo lighten-5')
-            ui.draggable.draggable('disable')
+        ui.draggable.addClass('indigo lighten-5')
+        ui.draggable.draggable('disable')
 
-            $(this).droppable('disable')
-            ui.draggable.position({ of: $(this), my: 'left top', at: 'left top' })
-            ui.draggable.draggable('option', 'revert', false)
-            correctCards++
-        }
+        $(this).droppable('disable')
+        ui.draggable.position({ of: $(this), my: 'left top', at: 'left top' })
+        ui.draggable.draggable('option', 'revert', false)
+
+        arrNom[contador] = cardName;
+        arrNomBool[contador] = true;
+
+        contador++;
 
     }
 
@@ -113,15 +124,15 @@ $(document).ready(function() {
         var slotStructure = $(this).data('estructura')
         var cardStructure = ui.draggable.data('estructura')
 
-        if (slotStructure == cardStructure) {
-            ui.draggable.addClass('indigo lighten-5')
-            ui.draggable.draggable('disable')
+        ui.draggable.addClass('indigo lighten-5')
+        ui.draggable.draggable('disable')
 
-            $(this).droppable('disable')
-            ui.draggable.position({ of: $(this), my: 'left top', at: 'left top' })
-            ui.draggable.draggable('option', 'revert', false)
-            correctCards++
-        }
+        $(this).droppable('disable')
+        ui.draggable.position({ of: $(this), my: 'left top', at: 'left top' })
+        ui.draggable.draggable('option', 'revert', false)
+
+        arrEstr[slotStructure-1] = cardStructure;
+        arrEstrBool[slotStructure-1] = true;
 
     }
 
@@ -132,3 +143,62 @@ $(document).ready(function() {
     }
 
 })
+
+function checar() {
+    for($x = 0; $x < 12; $x++) {
+        if (arrEstrBool[$x] == true) {
+            if (arrEstr[$x] == $x + 1) {
+                var el = document.getElementById("card-estr-" + arrNombresLista[$x]);
+                removeClass(el, 'indigo.lighten-5');
+                addClass(el, 'correct');
+                correctCards++;
+            }
+            else {
+                var incorrectCard = arrEstr[$x];
+                var el = document.getElementById("card-estr-" + arrNombresLista[incorrectCard-1]);
+                removeClass(el, 'indigo.lighten-5');
+                addClass(el, 'incorrect');
+
+                estrIncorrecto = true;
+            }
+        }
+
+        if (arrNomBool[$x] == true) {
+            alert(arrNom[$x]);
+            alert(arrNombresLista[$x])
+            if (arrNom[$x] == arrNombresLista[$x]) {
+                var el = document.getElementById("card-nom-" + arrNombresLista[$x]);
+                alert("card-nom-" + arrNombresLista[$x]);
+                removeClass(el, 'indigo.lighten-5');
+                addClass(el, 'correct');
+                correctCards++;
+            }
+            else {
+                var el = document.getElementById("card-nom-" + arrNom[$x]);
+                alert("card-nom-" + arrNom[$x]);
+                removeClass(el, 'indigo.lighten-5');
+                addClass(el, 'incorrect');
+
+                nomIncorrecto = true;
+            }
+        }
+    }
+    $('body, html').animate({ scrollTop: 900 }, 800);
+
+    if (estrIncorrecto == false && nomIncorrecto == false && correctCards == 24) {
+        alert("Todo esta correcto!")
+    }
+}
+
+function hasClass(ele,cls) {
+    return ele.className.match(new RegExp('(\\s|^)'+cls+'(\\s|$)'));
+}
+function addClass(ele,cls) {
+    if (!this.hasClass(ele,cls)) ele.className += " "+cls;
+}
+function removeClass(ele,cls) {
+    if (hasClass(ele,cls)) {
+        var reg = new RegExp('(\\s|^)'+cls+'(\\s|$)');
+        ele.className=ele.className.replace(reg,' ');
+    }
+}
