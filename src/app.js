@@ -9,6 +9,7 @@ var nomIncorrecto = false;
 var estrIncorrecto = false;
 var correctCards = 0;
 
+// Function to Compare Two Arrays
 Array.prototype.equals = function(array) {
     // if the other array is a falsy value, return
     if (!array)
@@ -159,93 +160,92 @@ $(document).ready(function() {
 
     }
 
-    // GAME 2
+    function checar() {
+        for ($x = 0; $x < 12; $x++) {
+            if (arrEstrBool[$x] == true) {
+                if (arrEstr[$x] == $x + 1) {
+                    var el = document.getElementById("card-estr-" + arrNombresLista[$x]);
+                    removeClass(el, 'indigo.lighten-5');
+                    addClass(el, 'correct');
+                    correctCards++;
+                } else {
+                    var incorrectCard = arrEstr[$x];
+                    var el = document.getElementById("card-estr-" + arrNombresLista[incorrectCard - 1]);
+                    removeClass(el, 'indigo.lighten-5');
+                    addClass(el, 'incorrect');
 
-    function myFunction() {
-        console.log("hola")
-    }
+                    estrIncorrecto = true;
+                }
+            }
 
-})
+            if (arrNomBool[$x] == true) {
+                if (arrNom[$x] == arrNombresLista[$x]) {
+                    var el = document.getElementById("card-nom-" + arrNombresLista[$x]);
+                    removeClass(el, 'indigo.lighten-5');
+                    addClass(el, 'correct');
+                    correctCards++;
+                } else {
+                    var el = document.getElementById("card-nom-" + arrNom[$x]);
+                    removeClass(el, 'indigo.lighten-5');
+                    addClass(el, 'incorrect');
 
-function checar() {
-    for ($x = 0; $x < 12; $x++) {
-        if (arrEstrBool[$x] == true) {
-            if (arrEstr[$x] == $x + 1) {
-                var el = document.getElementById("card-estr-" + arrNombresLista[$x]);
-                removeClass(el, 'indigo.lighten-5');
-                addClass(el, 'correct');
-                correctCards++;
-            } else {
-                var incorrectCard = arrEstr[$x];
-                var el = document.getElementById("card-estr-" + arrNombresLista[incorrectCard - 1]);
-                removeClass(el, 'indigo.lighten-5');
-                addClass(el, 'incorrect');
-
-                estrIncorrecto = true;
+                    nomIncorrecto = true;
+                }
             }
         }
+        $('body, html').animate({ scrollTop: 900 }, 800);
 
-        if (arrNomBool[$x] == true) {
-            if (arrNom[$x] == arrNombresLista[$x]) {
-                var el = document.getElementById("card-nom-" + arrNombresLista[$x]);
-                removeClass(el, 'indigo.lighten-5');
-                addClass(el, 'correct');
-                correctCards++;
-            } else {
-                var el = document.getElementById("card-nom-" + arrNom[$x]);
-                removeClass(el, 'indigo.lighten-5');
-                addClass(el, 'incorrect');
-
-                nomIncorrecto = true;
-            }
+        if (estrIncorrecto == false && nomIncorrecto == false && correctCards == 24) {
+            alert("Todo esta correcto!")
         }
     }
-    $('body, html').animate({ scrollTop: 900 }, 800);
 
-    if (estrIncorrecto == false && nomIncorrecto == false && correctCards == 24) {
-        alert("Todo esta correcto!")
+    function hasClass(ele, cls) {
+        return ele.className.match(new RegExp('(\\s|^)' + cls + '(\\s|$)'));
     }
-}
 
-function hasClass(ele, cls) {
-    return ele.className.match(new RegExp('(\\s|^)' + cls + '(\\s|$)'));
-}
-
-function addClass(ele, cls) {
-    if (!this.hasClass(ele, cls)) ele.className += " " + cls;
-}
-
-function removeClass(ele, cls) {
-    if (hasClass(ele, cls)) {
-        var reg = new RegExp('(\\s|^)' + cls + '(\\s|$)');
-        ele.className = ele.className.replace(reg, ' ');
+    function addClass(ele, cls) {
+        if (!this.hasClass(ele, cls)) ele.className += " " + cls;
     }
-}
 
-// Game 3
+    function removeClass(ele, cls) {
+        if (hasClass(ele, cls)) {
+            var reg = new RegExp('(\\s|^)' + cls + '(\\s|$)');
+            ele.className = ele.className.replace(reg, ' ');
+        }
+    }
 
-$(document).ready(function() {
+    // Game 3
 
-    // Initialize Image
+
+    // Initialize Image Picker
     $("select").imagepicker({
         limit: 5,
-        selected: selectedImages
+        selected: checkSelectedImages
     })
 
-    function selectedImages() {
 
-        var correcto = ["2", "4", "6", "8", "10"]
+    // Function Called When Images Have Been Picked
+    function checkSelectedImages() {
 
-        var miArray = []
-        miArray.push($(this).val())
-        miArray = miArray.sort()
+        // Array With Correct Images
+        var correctImages = ["2", "4", "6", "8", "10"]
 
-        console.log(miArray[0])
+        // Create New Arrays
+        var selectedImages = []
+            // Stack Selected Images in Array
+        selectedImages.push($(this).val())
+            // Sort Array of Selected Images
+        selectedImages = selectedImages.sort()
 
-        if (correcto.equals(miArray[0])) {
-            alert("asdasdas")
+        console.log(selectedImages[0].length)
+
+        // Check If Both Arrays Match 
+        if (correctImages.equals(selectedImages[0])) {
+            alert("Has Ganado!")
+        } else if (!correctImages.equals(selectedImages[0]) && selectedImages[0].length == 5) {
+            alert("Perdiste!")
         }
-
     }
 
 })
