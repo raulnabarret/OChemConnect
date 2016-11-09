@@ -190,11 +190,11 @@ h2 {
 
 /*Game 2*/
 
-input[type=text] {
+.input-equations {
     width: 40px !important;
-    height: 2rem;
-    margin: 0;
-    text-align: center;
+    height: 2rem !important;
+    margin: 0 !important;
+    text-align: center !important;
 }
 
 .reactions-inputs {
@@ -214,6 +214,10 @@ input[type=text] {
     letter-spacing: 1px;
     text-transform: uppercase;
     font-weight: 700;   
+}
+
+.formulario {
+    padding: 20px 0;
 }
 
 /*Footer*/
