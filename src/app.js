@@ -1,13 +1,36 @@
-var arrNombresLista = ["metano","etano","propano","butano","pentano","hexano","heptano","octano","nonano","decano","undecano","duodecano"];
-var arrNom = ["vacio","vacio","vacio","vacio","vacio","vacio","vacio","vacio","vacio","vacio","vacio","vacio"];
-var arrEstr = [0,0,0,0,0,0,0,0,0,0,0,0];
-var arrEstrBool = [false,false,false,false,false,false,false,false,false,false,false,false];
-var arrNomBool = [false,false,false,false,false,false,false,false,false,false,false,false];
+var arrNombresLista = ["metano", "etano", "propano", "butano", "pentano", "hexano", "heptano", "octano", "nonano", "decano", "undecano", "duodecano"];
+var arrNom = ["vacio", "vacio", "vacio", "vacio", "vacio", "vacio", "vacio", "vacio", "vacio", "vacio", "vacio", "vacio"];
+var arrEstr = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+var arrEstrBool = [false, false, false, false, false, false, false, false, false, false, false, false];
+var arrNomBool = [false, false, false, false, false, false, false, false, false, false, false, false];
 
 var contador = 0;
 var nomIncorrecto = false;
 var estrIncorrecto = false;
 var correctCards = 0;
+
+Array.prototype.equals = function(array) {
+    // if the other array is a falsy value, return
+    if (!array)
+        return false;
+
+    // compare lengths - can save a lot of time 
+    if (this.length != array.length)
+        return false;
+
+    for (var i = 0, l = this.length; i < l; i++) {
+        // Check if we have nested arrays
+        if (this[i] instanceof Array && array[i] instanceof Array) {
+            // recurse into the nested arrays
+            if (!this[i].equals(array[i]))
+                return false;
+        } else if (this[i] != array[i]) {
+            // Warning - two different object instances will never be equal: {x:20} != {x:20}
+            return false;
+        }
+    }
+    return true;
+}
 
 $(document).ready(function() {
 
@@ -17,7 +40,7 @@ $(document).ready(function() {
     $('.carousel.carousel-slider').carousel({ full_width: true })
 
 
-// GAME 1
+    // GAME 1
 
     $(init)
 
@@ -86,7 +109,7 @@ $(document).ready(function() {
             accept: '#cardPile div',
             hoverClass: 'hovered',
             drop: handleCardEstrDrop
-        })        
+        })
 
         $('#slot-estr-metano').data('estructura', '1')
         $('#slot-estr-etano').data('estructura', '2')
@@ -131,13 +154,13 @@ $(document).ready(function() {
         ui.draggable.position({ of: $(this), my: 'left top', at: 'left top' })
         ui.draggable.draggable('option', 'revert', false)
 
-        arrEstr[slotStructure-1] = cardStructure;
-        arrEstrBool[slotStructure-1] = true;
+        arrEstr[slotStructure - 1] = cardStructure;
+        arrEstrBool[slotStructure - 1] = true;
 
     }
 
     // GAME 2
-    
+
     function myFunction() {
         console.log("hola")
     }
@@ -145,17 +168,16 @@ $(document).ready(function() {
 })
 
 function checar() {
-    for($x = 0; $x < 12; $x++) {
+    for ($x = 0; $x < 12; $x++) {
         if (arrEstrBool[$x] == true) {
             if (arrEstr[$x] == $x + 1) {
                 var el = document.getElementById("card-estr-" + arrNombresLista[$x]);
                 removeClass(el, 'indigo.lighten-5');
                 addClass(el, 'correct');
                 correctCards++;
-            }
-            else {
+            } else {
                 var incorrectCard = arrEstr[$x];
-                var el = document.getElementById("card-estr-" + arrNombresLista[incorrectCard-1]);
+                var el = document.getElementById("card-estr-" + arrNombresLista[incorrectCard - 1]);
                 removeClass(el, 'indigo.lighten-5');
                 addClass(el, 'incorrect');
 
@@ -169,8 +191,7 @@ function checar() {
                 removeClass(el, 'indigo.lighten-5');
                 addClass(el, 'correct');
                 correctCards++;
-            }
-            else {
+            } else {
                 var el = document.getElementById("card-nom-" + arrNom[$x]);
                 removeClass(el, 'indigo.lighten-5');
                 addClass(el, 'incorrect');
@@ -186,15 +207,45 @@ function checar() {
     }
 }
 
-function hasClass(ele,cls) {
-    return ele.className.match(new RegExp('(\\s|^)'+cls+'(\\s|$)'));
+function hasClass(ele, cls) {
+    return ele.className.match(new RegExp('(\\s|^)' + cls + '(\\s|$)'));
 }
-function addClass(ele,cls) {
-    if (!this.hasClass(ele,cls)) ele.className += " "+cls;
+
+function addClass(ele, cls) {
+    if (!this.hasClass(ele, cls)) ele.className += " " + cls;
 }
-function removeClass(ele,cls) {
-    if (hasClass(ele,cls)) {
-        var reg = new RegExp('(\\s|^)'+cls+'(\\s|$)');
-        ele.className=ele.className.replace(reg,' ');
+
+function removeClass(ele, cls) {
+    if (hasClass(ele, cls)) {
+        var reg = new RegExp('(\\s|^)' + cls + '(\\s|$)');
+        ele.className = ele.className.replace(reg, ' ');
     }
 }
+
+// Game 3
+
+$(document).ready(function() {
+
+    // Initialize Image
+    $("select").imagepicker({
+        limit: 5,
+        selected: selectedImages
+    })
+
+    function selectedImages() {
+
+        var correcto = ["2", "4", "6", "8", "10"]
+
+        var miArray = []
+        miArray.push($(this).val())
+        miArray = miArray.sort()
+
+        console.log(miArray[0])
+
+        if (correcto.equals(miArray[0])) {
+            alert("asdasdas")
+        }
+
+    }
+
+})

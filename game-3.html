@@ -9,6 +9,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/css/materialize.min.css">
     <!-- Styles -->
     <link rel="stylesheet" href="src/styles/styles.css">
+    <!-- Image Picker Styles -->
+    <link rel="stylesheet" href="src/styles/image-picker.css">
     <!-- Icons -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <!-- FontAwesome -->
@@ -35,15 +37,33 @@
     </div>
     <div class="container">
         <div class="row">
-            <div class="col l12">
-                <h2>Lorem ipsum dolor.</h2>
-            </div>
-            <div class="col l12">
-                <h4>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto aut iste incidunt, praesentium molestias doloremque veritatis ea maxime animi harum.  </h4>
+            <div class="col l12 game-header">
+                <div class="game-title">
+                    <h5>Nivel 3</h5>
+                    <h3>Aplicaciones Reales</h3>
+                </div>
+                <div class="game-directions">
+                    <h4>El objetivo de este nivel es el de escribir los números correctos dentro de las líneas en blanco para completar las ecuaciones. </h4>
+                </div>
             </div>
         </div>
         <div id="content">
-            
+            <div class="row">
+                <div class="col l12">
+                    <select multiple="multiple" class="image-picker">
+                        <option  data-img-src="http://placekitten.com/150/150" value="1">Image</option>
+                        <option  data-img-src="http://placekitten.com/150/150" value="2">Image</option>
+                        <option  data-img-src="http://placekitten.com/150/150" value="3">Image</option>
+                        <option  data-img-src="http://placekitten.com/150/150" value="4">Image</option>
+                        <option  data-img-src="http://placekitten.com/150/150" value="5">Image</option>
+                        <option  data-img-src="http://placekitten.com/150/150" value="6">Image</option>
+                        <option  data-img-src="http://placekitten.com/150/150" value="7">Image</option>
+                        <option  data-img-src="http://placekitten.com/150/150" value="8">Image</option>
+                        <option  data-img-src="http://placekitten.com/150/150" value="9">Image</option>
+                        <option  data-img-src="http://placekitten.com/150/150" value="10">Image</option>
+                    </select>
+                </div>
+            </div>
         </div>
     </div>
     <footer class="page-footer blue darken-4">
@@ -69,11 +89,10 @@
             </div>
         </div>
     </footer>
-
     <!-- jQuery -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-    <!-- jQuery UI-->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <!-- Image Picker -->
+    <script src="src/image-picker.min.js"></script>
     <!-- App.js -->
     <script src="src/app.js"></script>
     <!-- Compiled and minified JavaScript -->
