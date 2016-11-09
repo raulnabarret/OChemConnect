@@ -52,6 +52,8 @@ h2 {
     margin: 0 0;
 }
 
+/*Stages*/
+
 #stages {
     padding: 75px 0 !important;
 }
@@ -71,6 +73,46 @@ h2 {
 
 .stages-card-content div p span {
     font-weight: 300;
+}
+
+/*Intro*/
+
+.intro {
+    padding: 20px 10px;
+    margin-bottom: 0;
+}
+
+.intro-img {
+    margin: 10% 0;
+}
+
+.intro-content {
+    margin: 10% 0;
+}
+
+.intro-title {
+    padding: 10px 0;
+}
+
+.intro-title h2 {
+    color: #283593;
+    font-size: 28px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+}
+
+.intro-title h3 {
+    font-size: 34px;
+    font-weight: 300;
+    letter-spacing: 1px;
+    margin: 0;
+    text-transform: uppercase;
+}
+
+.intro-text {
+    padding: 10px 0;
 }
 
 /*Game*/
