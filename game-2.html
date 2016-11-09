@@ -56,7 +56,7 @@
                             </div>
                             <div class="row reactions-inputs">
                                 <div class="col l12">
-                                    <input type="text"><span> —— CH<sub>3</sub> + </span><input id="input-2" type="text">
+                                    <span>H<sub>3</sub>C —— CH<sub>3</sub> + </span><input id="input-2" type="text">
                                 </div>
                             </div>
                             <div class="row reactions-inputs">
@@ -96,7 +96,7 @@
                             </div>
                             <div class="row reactions-inputs">
                                 <div class="col l12">
-                                    <input id="input-19" type="text"><span> —— CH<sub>2</sub> —— CH<sub>2</sub> —— </span><input type="text"> <span> —— CH<sub>2</sub> —— CH<sub>2</sub> —— CH<sub>2</sub> —— CH<sub>2</sub> —— CH<sub>2</sub> —— </span><input id="input-20" type="text"><span> + </span><input id="input-21" type="text">
+                                    <input id="input-19" type="text"><span> —— CH<sub>2</sub> —— CH<sub>2</sub> —— </span><input id="input-20"type="text"> <span> —— CH<sub>2</sub> —— CH<sub>2</sub> —— CH<sub>2</sub> —— CH<sub>2</sub> —— CH<sub>2</sub> —— </span><input id="input-21" type="text"><span> + </span><input id="input-22" type="text">
                                 </div>
                             </div>
                     </div>
@@ -420,7 +420,17 @@
                 $("#input-21").addClass('invalid');
             }
 
-            if(contador==21) {
+            //Input 22 
+            if($("#input-22").val()=='CH3'){
+                contador++
+                $("#input-22").removeClass('invalid')
+                $("#input-22").addClass('valid')
+            } else {
+                $("#input-22").removeClass('valid');
+                $("#input-22").addClass('invalid');
+            }
+
+            if(contador==22) {
                 alert("Ganaste")
                 contador = 0
             } else {
