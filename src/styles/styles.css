@@ -216,6 +216,14 @@ h2 {
     font-weight: 700;   
 }
 
+/*Game 3*/
+.image_picker_image {
+    width: 150px !important;
+    height: 150px !important;
+}
+
+/*Formulario*/
+
 .formulario {
     padding: 20px 0;
 }
