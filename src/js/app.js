@@ -259,7 +259,7 @@ function checkEquations() {
     }
 
     // Input 4
-    if ($("#input-4").val() == '4O2') {
+    if ($("#input-4").val() == '5O2') {
         correctEquations++
         $("#input-4").removeClass('invalid')
         $("#input-4").addClass('valid')
@@ -439,7 +439,7 @@ function checkEquations() {
     }
 
     //Input 22 
-    if ($("#input-22").val() == '31O2') {
+    if ($("#input-22").val() == '16O2') {
         correctEquations++
         $("#input-22").removeClass('invalid')
         $("#input-22").addClass('valid')
