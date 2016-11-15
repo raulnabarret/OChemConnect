@@ -9,6 +9,8 @@ var nomIncorrecto = false
 var estrIncorrecto = false
 var correctCards = 0
 
+var $progress = $('#progressBar')
+$progress.css('width', '0%')
 var progressBar = 0
 
 
@@ -480,14 +482,24 @@ $(document).ready(function() {
             // Sort Array of Selected Images
         selectedImages = selectedImages.sort()
 
-        console.log(selectedImages[0].length)
-
         // Check If Both Arrays Match 
         if (correctImages.equals(selectedImages[0])) {
             alert("Has Ganado!")
             progressBar++
+            console.log(progressBar)
         } else if (!correctImages.equals(selectedImages[0]) && selectedImages[0].length == 5) {
             alert("Perdiste!")
         }
+    }
+})
+
+$(document).ready(function() {
+
+    if (progressBar == 1) {
+        $progress.css({ 'width': '33%' })
+    } else if (progressBar == 2) {
+        $progress.css({ 'width': '99%' })
+    } else if (progressBar == 3) {
+        $progress.css({ 'width': '100%' })
     }
 })
